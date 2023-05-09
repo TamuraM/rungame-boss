@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class Move : MonoBehaviour
 {
@@ -13,14 +14,32 @@ public class Move : MonoBehaviour
     private InputAction _moveAction = default;
     [SerializeField] private const float MOVE_RANGE = 8;
     [SerializeField] private Score _score = default;
+    [SerializeField] private Transform[] _lanes = new Transform[3];
+    private int _laneIndex = 1;
 
-    private void Start()
+    private void Awake()
     {
         //--InputSystem使ってみた--//
         var playerInput = GetComponent<PlayerInput>();
         var actionMap = playerInput.currentActionMap;
         _moveAction = actionMap["Move"];
-        //--InputSystem使ってみた--// 参考:https://gamedev65535.com/entry/unity_inputsystem_howtouse/#i-2
+        //--InputSystem使ってみた--//
+        //参考:https://gamedev65535.com/entry/unity_inputsystem_howtouse/#i-2
+        //https://logmi.jp/tech/articles/326468
+    }
+
+    private void OnEnable()
+    {
+        _moveAction.started += MoveLane;
+    }
+
+    private void OnDisable()
+    {
+        _moveAction.started -= MoveLane;
+    }
+
+    private void Start()
+    {
         _forward = transform.forward;
         _rigidbody.velocity = _forward * _speed;
     }
@@ -38,19 +57,35 @@ public class Move : MonoBehaviour
             return;
         }
 
-        var move = _moveAction.ReadValue<float>();
-        _rigidbody.velocity = new Vector3(move * _speed, _rigidbody.velocity.y, _rigidbody.velocity.z);
+        //--自由に移動できる時--//
+        //var move = _moveAction.ReadValue<float>();
+        //_rigidbody.velocity = new Vector3(move * _speed, _rigidbody.velocity.y, _rigidbody.velocity.z);
 
-        //プレイヤーが外側に出れないように
-        if(transform.position.x < -MOVE_RANGE) //左端
-        {
-            transform.position = new Vector3(-MOVE_RANGE, transform.position.y, transform.position.z);
-        }
-        else if(transform.position.x > MOVE_RANGE) //右端
-        {
-            transform.position = new Vector3(MOVE_RANGE, transform.position.y, transform.position.z);
-        }
+        ////プレイヤーが外側に出れないように
+        //if(transform.position.x < -MOVE_RANGE) //左端
+        //{
+        //    transform.position = new Vector3(-MOVE_RANGE, transform.position.y, transform.position.z);
+        //}
+        //else if(transform.position.x > MOVE_RANGE) //右端
+        //{
+        //    transform.position = new Vector3(MOVE_RANGE, transform.position.y, transform.position.z);
+        //}
+        //--自由に移動できる時--//
+    }
 
+    public void MoveLane(InputAction.CallbackContext context)
+    {
+
+        if(!_isStop)
+        {
+            _laneIndex += (int)_moveAction.ReadValue<float>();
+
+            if (_laneIndex < 0) { _laneIndex = 0; return; }
+            if (_laneIndex > 2) { _laneIndex = 2; return; }
+
+            transform.DOMoveX(_lanes[_laneIndex].position.x, 0.2f).SetEase(Ease.Linear).SetAutoKill();
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)

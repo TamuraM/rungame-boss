@@ -1,5 +1,5 @@
 {
-    "name": "Test",
+    "name": "InputAction",
     "maps": [
         {
             "name": "Player",
@@ -7,9 +7,9 @@
             "actions": [
                 {
                     "name": "Move",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "f6fe8ba1-d196-4fe1-9bed-4f12dafba121",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -28,7 +28,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
+                    "name": "Negative",
                     "id": "d061d1f6-96c3-4495-94f1-e9d240f7cc0b",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -39,7 +39,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
+                    "name": "Positive",
                     "id": "38ae0d76-d24d-4981-a88c-490b7776286e",
                     "path": "<Keyboard>/d",
                     "interactions": "",
