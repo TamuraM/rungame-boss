@@ -1,4 +1,3 @@
-using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,4 +29,16 @@ public class Move : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        //ÉLÉÖÅ[ÉuÇ…ìñÇΩÇ¡ÇΩÇÁè¡Ç∑
+        if(other.gameObject.tag == "Target")
+        {
+            Destroy(other.gameObject);
+        }
+
+    }
+
 }
