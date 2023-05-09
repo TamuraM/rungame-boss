@@ -12,6 +12,7 @@ public class Move : MonoBehaviour
     private Vector3 _forward;
     private InputAction _moveAction = default;
     [SerializeField] private const float MOVE_RANGE = 8;
+    [SerializeField] private Score _score = default;
 
     private void Start()
     {
@@ -59,6 +60,7 @@ public class Move : MonoBehaviour
         if(other.gameObject.tag == "Target")
         {
             Destroy(other.gameObject);
+            _score.AddScore(1);
         }
 
     }
