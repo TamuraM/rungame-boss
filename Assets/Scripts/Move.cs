@@ -75,24 +75,23 @@ public class Move : MonoBehaviour
 
     public void MoveLane(InputAction.CallbackContext context)
     {
+        if(_isStop) return;
 
-        if(!_isStop)
-        {
-            _laneIndex += (int)_moveAction.ReadValue<float>();
+        _laneIndex += (int)_moveAction.ReadValue<float>();
 
-            if (_laneIndex < 0) { _laneIndex = 0; return; }
-            if (_laneIndex > 2) { _laneIndex = 2; return; }
+        if (_laneIndex < 0) { _laneIndex = 0; return; }
+        if (_laneIndex > 2) { _laneIndex = 2; return; }
 
-            transform.DOMoveX(_lanes[_laneIndex].position.x, 0.2f).SetEase(Ease.Linear).SetAutoKill();
-        }
-        
+        transform.DOMoveX(_lanes[_laneIndex].position.x, 0.2f).SetEase(Ease.Linear).SetAutoKill();
+
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
 
         //ÉLÉÖÅ[ÉuÇ…ìñÇΩÇ¡ÇΩÇÁè¡Ç∑
-        if(other.gameObject.tag == "Target")
+        if (other.gameObject.tag == "Target")
         {
             Destroy(other.gameObject);
             _score.AddScore(1);
