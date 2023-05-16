@@ -22,21 +22,22 @@ public class Move : MonoBehaviour
         //--InputSystem使ってみた--//
         var playerInput = GetComponent<PlayerInput>();
         var actionMap = playerInput.currentActionMap;
-        _moveAction = actionMap["Move"];
+        _moveAction = actionMap["MoveTrigger"];
+        _moveAction.started += MoveLane;
         //--InputSystem使ってみた--//
         //参考:https://gamedev65535.com/entry/unity_inputsystem_howtouse/#i-2
         //https://logmi.jp/tech/articles/326468
     }
 
-    private void OnEnable()
-    {
-        _moveAction.started += MoveLane;
-    }
+    //private void OnEnable()
+    //{
+    //    _moveAction.started += MoveLane;
+    //}
 
-    private void OnDisable()
-    {
-        _moveAction.started -= MoveLane;
-    }
+    //private void OnDisable()
+    //{
+    //    _moveAction.started -= MoveLane;
+    //}
 
     private void Start()
     {
@@ -56,6 +57,8 @@ public class Move : MonoBehaviour
             _isStop = true;
             return;
         }
+
+        //transform.position += new Vector3(0, 0, _speed);
 
         //--自由に移動できる時--//
         //var move = _moveAction.ReadValue<float>();
@@ -83,8 +86,6 @@ public class Move : MonoBehaviour
         if (_laneIndex > 2) { _laneIndex = 2; return; }
 
         transform.DOMoveX(_lanes[_laneIndex].position.x, 0.2f).SetEase(Ease.Linear).SetAutoKill();
-
-
     }
 
     private void OnTriggerEnter(Collider other)

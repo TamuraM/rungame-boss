@@ -1,15 +1,42 @@
 {
-    "name": "InputAction",
+    "name": "TestInputAction",
     "maps": [
         {
             "name": "Player",
             "id": "58844afe-f979-4bbf-8932-0c75494bedda",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "MoveTrigger",
                     "type": "Button",
                     "id": "f6fe8ba1-d196-4fe1-9bed-4f12dafba121",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Bang",
+                    "type": "Button",
+                    "id": "735e3c72-58bc-42f2-90c2-ec7284e7431b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "624e4ac6-6615-4726-8480-1bab49f01e4e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "d4a2f73d-cb07-4106-8454-353b7942e53f",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -23,7 +50,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveTrigger",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -34,7 +61,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveTrigger",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -45,7 +72,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveTrigger",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -56,7 +83,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveTrigger",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -67,7 +94,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveTrigger",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -78,7 +105,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveTrigger",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -89,7 +116,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveTrigger",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -100,7 +127,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveTrigger",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -111,7 +138,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveTrigger",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -122,7 +149,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveTrigger",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -133,7 +160,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveTrigger",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -141,6 +168,61 @@
                     "name": "positive",
                     "id": "14e67177-5efb-46d3-a3c3-b6ad0a627b18",
                     "path": "<SwitchProControllerHID>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "699a068f-6e82-4962-b183-3f7034a22b38",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bang",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f9c6dfdc-0c7f-4978-8942-9a67d42b1461",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "ADKeys",
+                    "id": "d63c812c-709a-4724-a1b8-7e65abb3db78",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e333e90a-d73a-465c-af91-397e07cbff3a",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "faf6a3a4-027b-431c-9e3d-2352a1fb9cfe",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

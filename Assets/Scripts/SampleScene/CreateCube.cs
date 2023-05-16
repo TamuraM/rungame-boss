@@ -14,23 +14,18 @@ public class CreateCube : MonoBehaviour
         int num = (int)(_goalPos.position.z - _startPos.position.z) / 5;
         int blockIndex = 1;
         Vector3 insPos = new Vector3(_blockInsPos[blockIndex].position.x, _startPos.position.y + _cube.transform.localScale.y, _startPos.position.z + 5);
-        Instantiate(_cube, insPos, Quaternion.identity);
+        Instantiate(_cube, insPos, Quaternion.identity, this.transform); //子オブジェクトにする
 
         for (int i = 2; i < num; i++)
         {
             blockIndex += Random.Range(0, 2) == 0 ? -1 : 1;
-            if (blockIndex < 0) blockIndex = 0;
-            if(blockIndex > _blockInsPos.Length - 1) blockIndex = _blockInsPos.Length - 1;
+            if (blockIndex < 0) blockIndex = 1;
+            if(blockIndex > _blockInsPos.Length - 1) blockIndex = _blockInsPos.Length - 2;
             insPos = new Vector3(_blockInsPos[blockIndex].position.x, _startPos.position.y + _cube.transform.localScale.y, _startPos.position.z + i * 5);
-            Instantiate(_cube, insPos, Quaternion.identity);
+            Instantiate(_cube, insPos, Quaternion.identity, this.transform); //子オブジェクトにする
         }
 
-        //for(int i = 1; _startPos.position.z + i * 5 < _goalPos.position.z; i++)
-        //{
-        //    Vector3 insPos = new Vector3(_startPos.position.x, _startPos.position.y + _cube.transform.localScale.y, _startPos.position.z + i * 5);
-        //    Instantiate(_cube, insPos, Quaternion.identity);
-        //}
-
+        //子オブジェクトにするメリット:親オブジェクト(今回はこのオブジェクト)を消せばすべて消える
     }
 
 }
