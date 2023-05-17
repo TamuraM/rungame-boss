@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player2D : MonoBehaviour
+public class Player2D : MonoBehaviour, IDamageable2D
 {
     private InputAction _bangAction, _moveAction, _jumpAction;
     [SerializeField] private GameObject _bullet = default;
 
     [SerializeField] private float _speed = 3;
+    [SerializeField] private float _life = 5;
 
-    //[SerializeField] private bool _isJumping = false;
     [SerializeField] private byte _isJumping = 0b0000_0000;
     private float _minY = default;
     [SerializeField] private float _maxJumpPower = 2;
@@ -54,10 +54,15 @@ public class Player2D : MonoBehaviour
         transform.position = new Vector3(moveX, moveY, 0);
     }
 
+    public void Damage(int damage)
+    {
+        _life -= damage;
+    }
+
     private void Bang(InputAction.CallbackContext context)
     {
         Vector3 bulletShotPos = new Vector3(this.transform.position.x + this.transform.localScale.x, this.transform.position.y, 0);
-        Instantiate(_bullet, bulletShotPos, Quaternion.identity);
+        Instantiate(_bullet, bulletShotPos, this.transform.rotation);
     }
 
     private void Jump(InputAction.CallbackContext context)
