@@ -46,6 +46,12 @@ public class Enemy2D : MonoBehaviour, IDamageable2D
     public void Damage(int damage)
     {
         _life -= damage;
+
+        if( _life <= 0 )
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 }

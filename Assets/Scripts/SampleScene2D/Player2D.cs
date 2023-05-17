@@ -67,6 +67,7 @@ public class Player2D : MonoBehaviour, IDamageable2D
 
     private void Jump(InputAction.CallbackContext context)
     {
+
         if((_isJumping & 1) == 0) //まだジャンプしてなかったら
         {
             _isJumping = 1; //一度ジャンプしたことにする

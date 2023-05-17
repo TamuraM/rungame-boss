@@ -9,7 +9,7 @@ public class Bullet2D : MonoBehaviour
     void Update()
     {
         //“–‚½‚è”»’è‚ğ‚µ‚½‚¢“G‚½‚¿‚ğæ‚Á‚Ä‚­‚é‚ñ‚¾‚¯‚ÇAd‚»‚¤
-        var targets = GameObject.FindGameObjectsWithTag("Enemy"); ;
+        var targets = GameObject.FindGameObjectsWithTag("Enemy");
 
         for(int i = 0; i < targets.Length; i++)
         {
